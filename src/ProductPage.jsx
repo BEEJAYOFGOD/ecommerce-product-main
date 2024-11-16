@@ -159,7 +159,7 @@ const ProductPage = (props) => {
                 <input
                   min="1"
                   max="10"
-                  className="text-center bg-neutral-200 outline-none scroll-m-0"
+                  className="text-center bg-neutral-200 outline-none scroll-m-0 font-semibold text-neutral-veryDarkBlue"
                   type="number"
                   name={quantity}
                   value={quantity}

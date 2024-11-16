@@ -51,7 +51,7 @@ const Modal = (props) => {
       >
         <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
           <path
-            className="fill-white group-hover:fill-primary-orange"
+            className="fill-white group-hover:fill-primary-orange "
             d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
             fillRule="evenodd"
           />
@@ -65,7 +65,7 @@ const Modal = (props) => {
           className="bg-white p-4 rounded-full w-[50px] h-[50px] flex -mr-6 z-10 group"
         >
           <svg
-            className="stroke-red-500 group-hover:stroke-yellow-500 transition duration-300"
+            className="stroke-red-500 group-hover:stroke-yellow-500 group-hover:-translate-x-[6px] transition duration-300"
             width="12"
             height="18"
             xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ const Modal = (props) => {
             width="13"
             height="18"
             xmlns="http://www.w3.org/2000/svg"
-            className="stroke-red-500 group-hover:stroke-yellow-500 transition duration-300"
+            className="stroke-red-500 group-hover:stroke-yellow-500 group-hover:translate-x-[6px] transition-all duration-300"
           >
             <path
               d="m2 1 8 8-8 8"

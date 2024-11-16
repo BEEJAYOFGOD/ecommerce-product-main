@@ -50,7 +50,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
             />
           </svg>
         </div>
-        <div className="hover:border-primary-orange hover:border-[3px]  hover:transition-all hover:ease-out ease-in duration-100 hover:duration-[0.3s] rounded-full">
+        <div className="hover:border-primary-orange hover:border-[3px]  rounded-full">
           <img className="w-12 " src={avatarImage} alt="avatar" />
         </div>
       </div>

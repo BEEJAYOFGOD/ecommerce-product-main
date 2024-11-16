@@ -61,7 +61,7 @@ const ProductPage = (props) => {
           <div id="product_c_c">
             <div
               id="productC"
-              className="flex w-full  rounded-xl overflow-hidden"
+              className="flex w-full cursor-pointer rounded-xl overflow-hidden"
             >
               {Array.isArray(productImages) &&
                 productImages.map((imageUrl, idx) => (

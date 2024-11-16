@@ -16,7 +16,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
     <nav className="flex max-w-[1200px] justify-between h-full  mx-auto border-b-2 border-black border-opacity-20 box-border z-10">
       <div className="flex gap-12 items-center ">
         <h1 className="font-bold text-4xl">sneakers</h1>
-        <ul className="flex gap-8 min-h-full items-center  relative ">
+        <ul className="flex gap-8 min-h-full items-center relative ">
           <li className="hover-effect">Collections</li>
           <li className="hover-effect">Men</li>
           <li className="hover-effect">Women</li>

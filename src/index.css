@@ -7,7 +7,7 @@
 /* styles.css or tailwind.css */
 @layer components {
   .hover-effect {
-    @apply cursor-pointer flex items-center min-h-[90px] relative text-neutral-darkGrayishBlue ;
+    @apply cursor-pointer flex items-center min-h-[90px] relative text-neutral-darkGrayishBlue hover:text-neutral-veryDarkBlue;
   }
 
   .hover-effect::before {

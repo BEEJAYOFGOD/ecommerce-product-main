@@ -113,7 +113,7 @@ const ProductPage = (props) => {
 
         <div className="flex-1 ">
           <h2 className="text-orange-500 font-bold">SNEAKER COMPANY</h2>
-          <h3 className="text-5xl">
+          <h3 className="text-5xl font-bold">
             Fall Limited Edition <br /> Sneakers
           </h3>
           <p className="opacity-60 mt-10">
@@ -159,7 +159,7 @@ const ProductPage = (props) => {
                 <input
                   min="1"
                   max="10"
-                  className="text-center bg-neutral-200 outline-none scroll-m-0 font-semibold text-neutral-veryDarkBlue"
+                  className="text-center bg-neutral-200 outline-none scroll-m-0 font-bold text-neutral-veryDarkBlue"
                   type="number"
                   name={quantity}
                   value={quantity}

@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles.css or tailwind.css */
+@layer components {
+  .hover-effect {
+    @apply cursor-pointer flex items-center min-h-[90px] relative text-neutral-darkGrayishBlue;
+  }
+
+  .hover-effect::before {
+    @apply absolute bottom-0 left-0 h-1 w-0  content-[''] scale-0;
+    transition: all 0.3s ease-out;
+  }
+
+  .hover-effect:hover::before {
+    @apply scale-100 w-full bg-primary-orange;
+    transition: all 0.45s ease-in;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  .scale-thru {
+    animation-name: scale-thru;
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.25, 0.69, 0.54, 0.66);
+  }
+
+  @keyframes scale-thru {
+    0% {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+
+    80% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .slide-down {
+    animation-name: slide-down;
+    animation-duration: 0.15s;
+    animation-timing-function: cubic-bezier(0.25, 0.69, 0.54, 0.66);
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-300px);
+    }
+    100% {
+      transform: translateY(none);
+    }
+  }
+
+  /* Animation for scaling */
+  .scale-thru_slow {
+    animation: scale-thru 0.5s cubic-bezier(0.62, 0.42, 0.55, 0.4) both;
+  }
+
+  @keyframes scale-thru {
+    0% {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    80% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Spin with changing border-radius */
+  .spinAC {
+    animation: spinAC 0.6s cubic-bezier(0.62, 0.42, 0.55, 0.4) both;
+  }
+
+  @keyframes spinAC {
+    0% {
+      transform: rotate(0deg);
+      border-radius: 50%; /* Using standard transform instead of @apply */
+    }
+    25% {
+      border-radius: 0.75rem; /* equivalent of rounded-3xl */
+    }
+    50% {
+      border-radius: 1rem; /* equivalent of rounded-2xl */
+    }
+    100% {
+      transform: rotate(-360deg);
+      border-radius: 50%; /* Reset to full circle */
+    }
+  }
+}

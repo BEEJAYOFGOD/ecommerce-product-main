@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 // eslint-disable-next-line react/prop-types
 const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
   const [animate_pulse, setAnimatePulse] = useState("");
+  /////////////////
   useEffect(() => {
     setAnimatePulse("animate-pulse");
     setTimeout(() => {
@@ -14,14 +15,14 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
   return (
     // <div className="box-border">
     <nav className="flex max-w-[1200px] justify-between h-full  mx-auto border-b-2 border-black border-opacity-20 box-border z-10">
-      <div className="flex gap-12 items-center ">
+      <div className="flex gap-12 items-center">
         <h1 className="font-bold text-4xl">sneakers</h1>
         <ul className="flex gap-8 min-h-full items-center relative ">
-          <li className="hover-effect">Collections</li>
-          <li className="hover-effect">Men</li>
-          <li className="hover-effect">Women</li>
-          <li className="hover-effect">About</li>
-          <li className="hover-effect">Contact</li>
+          <li className="nav-links">Collections</li>
+          <li className="nav-links">Men</li>
+          <li className="nav-links">Women</li>
+          <li className="nav-links">About</li>
+          <li className="nav-links">Contact</li>
         </ul>
       </div>
       <div className="flex items-center gap-6">

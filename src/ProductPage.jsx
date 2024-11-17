@@ -49,7 +49,7 @@ const ProductPage = (props) => {
         document
           .querySelector("#product_c_c")
           .classList.remove("scale-thru_slow");
-        // product_C.classList.remove("scale-thru_slow");
+        
       }, 300);
     }
   };

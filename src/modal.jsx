@@ -8,7 +8,7 @@ const Modal = (props) => {
     productImages,
     index: modeIndex,
     changeModalVisibility: showModal,
-    changeIndex,
+    changeIndex, // change Index when thumbnail is clicked
   } = props;
 
   const movetoNext = (modeIndex) => {

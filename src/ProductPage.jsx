@@ -22,15 +22,28 @@ const ProductPage = (props) => {
     setThumbIndex(idx);
   };
 
+  const movetoNext = () => {
+    setThumbIndex((index) =>
+      index < productImages.length - 1 ? index + 1 : 0
+    );
+  };
+
+  const moveToPrev = () => {
+    setThumbIndex((index) =>
+      index === 0 ? productImages.length - 1 : index - 1
+    );
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const loadPage = () => {
+    let storedQuantity = parseInt(localStorage.getItem("quantity"), 10);
+    let updatedQuantity = storedQuantity ? storedQuantity - 1 : 0;
+
+    setQuantity(updatedQuantity);
+    changeCartNo(updatedQuantity);
+  };
+
   useEffect(() => {
-    const loadPage = () => {
-      let storedQuantity = parseInt(localStorage.getItem("quantity"), 10);
-      let updatedQuantity = storedQuantity ? storedQuantity - 1 : 0;
-
-      setQuantity(updatedQuantity);
-      changeCartNo(updatedQuantity);
-    };
-
     window.addEventListener("load", () => {
       loadPage();
     });
@@ -38,27 +51,48 @@ const ProductPage = (props) => {
     return () => {
       window.removeEventListener("load", loadPage);
     };
-  }, [changeCartNo, quantity]);
+  }, [changeCartNo, loadPage, quantity]);
 
   const animateProcuctOnCLick = (idx) => {
     if (thumbIndex != idx) {
       document.querySelector("#productC").classList.add("spinAC");
       document.querySelector("#product_c_c").classList.add("scale-thru_slow");
+
       setTimeout(() => {
         document.querySelector("#productC").classList.remove("spinAC");
         document
           .querySelector("#product_c_c")
           .classList.remove("scale-thru_slow");
-        
       }, 300);
     }
   };
 
   return (
     <>
-      <section className="max-w-[1200px] px-12 flex items-center mx-auto gap-28 box-border">
+      <section className="md:max-w-[1200px] md:px-12 px-4 w-full  flex flex-col md:flex-row items-center mx-auto md:gap-28 box-border">
         <div className="flex-1">
-          <div id="product_c_c">
+          <div id="product_c_c" className="relative">
+            <div
+              className="absolute bottom-1/2 top-[46%]  w-12 h-12 left-2 z-20 bg-white rounded-full p-4 flex justify-center items-center md:hidden cursor-pointer"
+              onClick={() => {
+                moveToPrev();
+              }}
+            >
+              <svg
+                className="stroke-neutral-900 md:stroke-red-500 group-hover:stroke-yellow-500 group-hover:-translate-x-[6px] transition duration-300"
+                width="12"
+                height="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 1 3 9l8 8"
+                  strokeWidth="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+
             <div
               id="productC"
               className="flex w-full cursor-pointer rounded-xl overflow-hidden"
@@ -68,12 +102,11 @@ const ProductPage = (props) => {
                   <div
                     style={{
                       transform: `translateX(-${thumbIndex * 100}%)`,
-                      transition: "transform 0s ease-in-out",
                     }}
                     onClick={() => {
                       handleProductClick(idx);
                     }}
-                    className="min-w-full rounded-xl"
+                    className="min-w-full rounded-xl transform duration-300 md:duration-0"
                     key={idx}
                   >
                     <img
@@ -84,8 +117,28 @@ const ProductPage = (props) => {
                   </div>
                 ))}
             </div>
+            <div
+              className="absolute bottom-1/2 top-[46%]  w-12 h-12 right-2 z-20 bg-white rounded-full p-4 flex justify-center items-center md:hidden cursor-pointer"
+              onClick={() => {
+                movetoNext();
+              }}
+            >
+              <svg
+                width="13"
+                height="18"
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-neutral-950 md:stroke-red-500 group-hover:stroke-yellow-500 group-hover:translate-x-[6px] transition-all duration-300"
+              >
+                <path
+                  d="m2 1 8 8-8 8"
+                  strokeWidth="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
-          <div className={`flex gap-2 mt-4`}>
+          <div className={`hidden md:flex gap-2 mt-4`} id="thumbnails">
             {thumbnails.map((imageUrl, idx) => (
               <div
                 onClick={() => {
@@ -121,18 +174,20 @@ const ProductPage = (props) => {
             Featuring a durable rubber outer sole, they&apos;ll withstand
             everything the weather can offer
           </p>
-          <p className="text-2xl font-bold mt-6">
-            $125.00{" "}
-            <span className="bg-neutral-veryDarkBlue text-white py-1 px-2 rounded-md text-base">
-              50%
-            </span>
-          </p>
-          <p className="text-base text-neutral-500 font-bold line-through">
-            $250.00
-          </p>{" "}
+          <div id="pricing" className="flex justify-between mt-6 md:flex-col">
+            <p className=" text-2xl font-bold ">
+              $125.00
+              <span className="bg-neutral-veryDarkBlue text-white py-1 px-2 rounded-md text-base">
+                50%
+              </span>
+            </p>
+            <p className="text-base text-neutral-500 font-bold line-through">
+              $250.00
+            </p>
+          </div>
           {/* Updated price */}
-          <div className="flex min-w-full gap-4 mt-8">
-            <div className="bg-neutral-200 basis-[40%] rounded-md text-center flex justify-between items-center px-8">
+          <div className="flex min-w-full gap-4 mt-8 flex-col md:flex-row">
+            <div className="bg-neutral-200  rounded-md text-center flex justify-between items-center px-8 py-4 md:py-4">
               <button
                 className="group"
                 id="decrement"
@@ -208,7 +263,7 @@ const ProductPage = (props) => {
                 changeCartNo(quantity);
                 localStorage.setItem("quantity", quantity + 1);
               }}
-              className="bg-primary-orange hover:bg-opacity-50 basis-[60%] min-w-fit rounded-md py-4 flex items-center justify-center gap-4"
+              className="bg-primary-orange hover:bg-opacity-50 basis-[65%] min-w-fit rounded-md py-4 flex items-center justify-center gap-4 mb-4 md:mb-0"
             >
               <span>
                 <svg
@@ -231,12 +286,5 @@ const ProductPage = (props) => {
     </>
   );
 };
-
-// ProductPage.propTypes = {
-//   thumbnails: PropTypes.array.isRequired,
-//   productImages: PropTypes.array.isRequired,
-//   changeIndex: PropTypes.func.isRequired,
-//   changeModalVisibility: PropTypes.func.isRequired, // Added prop type for modalVisibility
-// };
 
 export default ProductPage;

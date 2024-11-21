@@ -7,7 +7,7 @@
 /* styles.css or tailwind.css */
 @layer components {
   .nav-links {
-    @apply cursor-pointer flex items-center min-h-[90px] relative text-neutral-darkGrayishBlue hover:text-neutral-veryDarkBlue;
+    @apply cursor-pointer flex items-center md:min-h-[90px] relative text-neutral-darkGrayishBlue hover:text-neutral-veryDarkBlue;
   }
 
   .nav-links::before {

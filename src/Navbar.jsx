@@ -19,45 +19,51 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
       <div className="flex gap-2 md:gap-12 items-center">
         <div
           id="menuBtn"
-          className="flex md:hidden"
+          className="flex md:hidden w-[30px]"
           onClick={() => {
-            let allLinks = document.querySelector("#linkContainer");
-            let menuOverlay = document.querySelector("#menuOverlay");
-            allLinks.classList.replace("hidden", "flex");
-            menuOverlay.classList.replace("hidden", "flex");
+            // let allLinks = document.querySelector("#linkContainer");
+            // let menuOverlay = document.querySelector("#menuOverlay");
+            // allLinks.classList.replace("hidden", "flex");
+            // menuOverlay.classList.replace("hidden", "flex");
           }}
         >
           <img src={mobileMenu} alt="" />
         </div>
         <h1 className="font-bold text-4xl">sneakers</h1>
 
-        <div className="absolute top-0">
-          <button
-            id="closeBtn"
-            className="w-[25vw] flex justify-end mb-4 group"
-            onClick={() => {
-              // showModal(false);
-            }}
-          >
-            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
-              <path
-                className="fill-black group-hover:fill-primary-orange "
-                d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
-                fillRule="evenodd"
-              />
-            </svg>
-          </button>
+        <div
+          id="mobileNav"
+          className=" absolute top-0 left-0  z-50 w-screen flex"
+        >
+          <div id="nav" className="bg-white z-50 min-h-screen w-[70%] border border-red-600 text-right">
+            <button
+              id="closeBtn"
+              className="md:hidden flex justify-end mb-4 group border border-red-500 w-full px-8 py-4"
+              onClick={() => {
+                // showModal(false);
+              }}
+            >
+              <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  className="fill-black group-hover:fill-primary-orange "
+                  d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </button>
 
-          <ul
-            id="linkContainer"
-            className="absolute top-0 left-0 z-50 w-[70%] hidden bg-white md:flex flex-col md:flex-row md:gap-8 gap-4 min-h-full md:items-center p-8 md:p-0"
-          >
-            <li className="nav-links">Collections</li>
-            <li className="nav-links">Men</li>
-            <li className="nav-links">Women</li>
-            <li className="nav-links">About</li>
-            <li className="nav-links">Contact</li>
-          </ul>
+            <ul
+              id="linkContainer"
+              className="bg-white gap-2 flex flex-col md:flex-row md:gap-8 min-h-full md:items-center p-8 md:p-0 border border-red-600 items-end"
+            >
+              <li className="nav-links">Collections</li>
+              <li className="nav-links">Men</li>
+              <li className="nav-links">Women</li>
+              <li className="nav-links">About</li>
+              <li className="nav-links">Contact</li>
+            </ul>
+          </div>
+          <div id="navOverlay" className="bg-black w-[30%] min-h-screen opacity-50">Ademola</div>
         </div>
 
         <div

@@ -53,14 +53,11 @@ function App() {
   const emptyCart = () => {
     setCartNo(0);
   };
-  // useEffect(() => {
-  //   name = "dummy";
-  // }, [name]);
 
   return (
     <div id="app" className="min-h-screen relative font-kumbhSans">
       <NavBar cartNo={cartNo} toggleCartDisplay={toggleCartDisplay} />
-      <main className="pt-14">
+      <main className="md:pt-14">
         <ProductPage
           thumbnails={thumbnails}
           productImages={productImages}

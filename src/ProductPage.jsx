@@ -167,11 +167,13 @@ const ProductPage = (props) => {
         </div>
 
         <div className="flex-1 ">
-          <h2 className="text-orange-500 font-bold">SNEAKER COMPANY</h2>
-          <h3 className="text-5xl font-bold">
+          <h2 className="text-orange-500 font-bold mt-4 md:mt-0">
+            SNEAKER COMPANY
+          </h2>
+          <h3 className="md:text-5xl text-3xl font-bold my-2 md:my-0">
             Fall Limited Edition <br /> Sneakers
           </h3>
-          <p className="opacity-60 mt-10">
+          <p className="opacity-60 md:mt-10">
             These low-profile sneakers are your perfect casual wear companion
             Featuring a durable rubber outer sole, they&apos;ll withstand
             everything the weather can offer

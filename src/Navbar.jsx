@@ -68,9 +68,10 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
           <div
             id="navOverlay"
             className="bg-black w-[30%] min-h-full flex md:hidden"
-          >
-            Ademola
-          </div>
+            onClick={() => {
+              mobileNav.classList.replace("flex", "hidden"); // this removes mobile menu
+            }}
+          ></div>
         </div>
 
         <div
@@ -81,7 +82,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
             allLinks.classList.replace("flex", "hidden");
             menuOverlay.classList.replace("flex", "hidden");
           }}
-          className="hidden bg-black w-[30%] opacity-70 absolute top-0 right-0 min-h-full z-50 "
+          className="hidden bg-black w-[30%] opacity-70 absolute top-0 right-0 min-h-full z-30"
         >
           ade
         </div>

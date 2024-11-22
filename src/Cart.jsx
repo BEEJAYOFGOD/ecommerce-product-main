@@ -38,7 +38,7 @@ const Cart = ({ cartNo, cartvisibility, emptyCart }) => {
                 </span>
               </p>
             </div>
-            <div
+            <button
               className="flex items-center cursor-pointer"
               onClick={() => {
                 let q = confirm("do youwant to empty your cart??");
@@ -50,7 +50,7 @@ const Cart = ({ cartNo, cartvisibility, emptyCart }) => {
               }}
             >
               <img className="w-5 h-5" src={deleteBtn} alt="" />
-            </div>
+            </button>
           </div>
         ) : (
           <div className="w-[300px] h-[100px] flex items-center justify-center">

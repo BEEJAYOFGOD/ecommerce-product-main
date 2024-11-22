@@ -18,10 +18,6 @@ const ProductPage = (props) => {
     changeModalVisibility(true);
   };
 
-  const handleThumbnailClick = (idx) => {
-    setThumbIndex(idx);
-  };
-
   const movetoNextSlide = () => {
     setThumbIndex((index) =>
       index < productImages.length - 1 ? index + 1 : 0
@@ -96,7 +92,6 @@ const ProductPage = (props) => {
             <button
               className="absolute bottom-1/2 top-[46%]  w-12 h-12 left-2 z-20 bg-white rounded-full p-4 flex justify-center items-center md:hidden cursor-pointer"
               onClick={() => {
-                alert("hey");
                 moveToPrevSlide();
               }}
             >
@@ -173,7 +168,8 @@ const ProductPage = (props) => {
             {thumbnails.map((imageUrl, idx) => (
               <div
                 onClick={() => {
-                  handleThumbnailClick(idx);
+                  // handleThumbnailClick(idx);
+                  setThumbIndex(idx);
                   animateProcuctOnCLick(idx);
                 }}
                 key={idx}

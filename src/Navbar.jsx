@@ -17,7 +17,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
 
   return (
     // <div className="box-border">
-    <nav className="flex w-screen  px-6 py-4 md:p-0  md:max-w-[1200px] justify-between h-full  md:mx-auto md:border-b-2 border-black border-opacity-20 box-border z-10">
+    <nav className="flex w-screen p-4 md:px-0 md:py-6 md:max-w-[1200px] justify-between h-full  md:mx-auto md:border-b-2 border-black border-opacity-20 box-border z-10">
       <div className="flex gap-2 md:gap-12 items-center">
         <div
           id="menuBtn"
@@ -88,11 +88,12 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
         </div>
       </div>
       <div className="flex items-center gap-6">
-        <div
+        <button
+          id="cartImage"
           onClick={() => {
             toggleCartDisplay();
           }}
-          className={`relative cursor-pointer ${animate_pulse}`}
+          className={`relative ${animate_pulse}`}
         >
           <span
             className={`absolute flex justify-center items-center -right-6 -top-3  z-10 bg-primary-orange h-fit w-[20px] px-5  rounded-full ${
@@ -112,7 +113,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
               fillRule="nonzero"
             />
           </svg>
-        </div>
+        </button>
         <div className="hover:border-primary-orange hover:border-[3px]  rounded-full">
           <img className="w-12 " src={avatarImage} alt="avatar" />
         </div>

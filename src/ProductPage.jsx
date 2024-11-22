@@ -104,7 +104,9 @@ const ProductPage = (props) => {
                       transform: `translateX(-${thumbIndex * 100}%)`,
                     }}
                     onClick={() => {
-                      handleProductClick(idx);
+                      if (!window.matchMedia("(max-width: 740px)").matches) {
+                        handleProductClick(idx);
+                      }
                     }}
                     className="min-w-full rounded-xl transform duration-300 md:duration-0"
                     key={idx}

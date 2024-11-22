@@ -7,7 +7,7 @@
 /* styles.css or tailwind.css */
 @layer components {
   .nav-links {
-    @apply cursor-pointer flex items-center md:min-h-[90px] relative text-neutral-darkGrayishBlue hover:text-neutral-veryDarkBlue;
+    @apply cursor-pointer flex items-center md:min-h-[90px] relative md:text-neutral-darkGrayishBlue lg:hover:text-neutral-veryDarkBlue font-bold md:font-normal;
   }
 
   .nav-links::before {
@@ -97,6 +97,32 @@
     100% {
       transform: rotate(-360deg);
       border-radius: 50%; /* Reset to full circle */
+    }
+  }
+
+  .slide-in_from_left {
+    animation-name: slide-in;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+  }
+
+  @keyframes slide-in {
+    0% {
+      transform: translateX(-300px);
+    }
+    100% {
+      transform: translateX(none);
+    }
+  }
+
+  #navOverlay {
+    opacity: 0;
+    animation: fade-in 0.3s ease-in 0.2s forwards;
+  }
+  @keyframes fade-in {
+    100% {
+      opacity: 0.5;
     }
   }
 }

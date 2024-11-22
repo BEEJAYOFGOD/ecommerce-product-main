@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
-  const [animate_pulse, setAnimatePulse] = useState("");
-  /////////////////
+  const [animate_pulse, setCartAnimatePulse] = useState("");
+  let mobileNav = document.querySelector("#mobileNav");
+
   useEffect(() => {
-    setAnimatePulse("animate-pulse");
+    setCartAnimatePulse("animate-pulse");
+
     setTimeout(() => {
-      setAnimatePulse("");
+      setCartAnimatePulse("");
     }, 4000);
   }, [cartNumber]);
 
@@ -21,10 +23,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
           id="menuBtn"
           className="flex md:hidden w-[30px]"
           onClick={() => {
-            // let allLinks = document.querySelector("#linkContainer");
-            // let menuOverlay = document.querySelector("#menuOverlay");
-            // allLinks.classList.replace("hidden", "flex");
-            // menuOverlay.classList.replace("hidden", "flex");
+            mobileNav.classList.replace("hidden", "flex");
           }}
         >
           <img src={mobileMenu} alt="" />
@@ -33,14 +32,17 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
 
         <div
           id="mobileNav"
-          className=" absolute top-0 left-0  z-50 w-screen flex"
+          className=" absolute top-0 left-0 z-50 w-screen md:static md:w-fit min-h-full hidden"
         >
-          <div id="nav" className="bg-white z-50 min-h-screen w-[70%] border border-red-600 text-right">
+          <div
+            id="nav"
+            className="bg-white z-50  w-[70%] md:max-w-fit md:min-h-[30px] slide-in_from_left"
+          >
             <button
               id="closeBtn"
-              className="md:hidden flex justify-end mb-4 group border border-red-500 w-full px-8 py-4"
+              className="md:hidden flex mb-4 group  w-full p-8 "
               onClick={() => {
-                // showModal(false);
+                mobileNav.classList.replace("flex", "hidden");
               }}
             >
               <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +56,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
 
             <ul
               id="linkContainer"
-              className="bg-white gap-2 flex flex-col md:flex-row md:gap-8 min-h-full md:items-center p-8 md:p-0 border border-red-600 items-end"
+              className="bg-white gap-2 flex flex-col md:flex-row md:gap-8  md:items-center px-8 md:p-0"
             >
               <li className="nav-links">Collections</li>
               <li className="nav-links">Men</li>
@@ -63,7 +65,12 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
               <li className="nav-links">Contact</li>
             </ul>
           </div>
-          <div id="navOverlay" className="bg-black w-[30%] min-h-screen opacity-50">Ademola</div>
+          <div
+            id="navOverlay"
+            className="bg-black w-[30%] min-h-full flex md:hidden"
+          >
+            Ademola
+          </div>
         </div>
 
         <div
@@ -74,7 +81,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
             allLinks.classList.replace("flex", "hidden");
             menuOverlay.classList.replace("flex", "hidden");
           }}
-          className="hidden bg-black w-[30%] opacity-70 absolute top-0 right-0 min-h-full z-50"
+          className="hidden bg-black w-[30%] opacity-70 absolute top-0 right-0 min-h-full z-50 "
         >
           ade
         </div>

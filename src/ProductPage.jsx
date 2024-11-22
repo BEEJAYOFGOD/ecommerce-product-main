@@ -27,15 +27,7 @@ const ProductPage = (props) => {
       index < productImages.length - 1 ? index + 1 : 0
     );
   };
-  const handleProductGesture = () => {
-    const changeInX = touchEndX - touchStartX;
 
-    if (changeInX > 0 && Math.abs(changeInX) > threshold) {
-      moveToPrevSlide();
-    } else if (changeInX < 0 && Math.abs(changeInX) > threshold) {
-      movetoNextSlide();
-    }
-  };
   const moveToPrevSlide = () => {
     setThumbIndex((index) =>
       index === 0 ? productImages.length - 1 : index - 1
@@ -61,6 +53,15 @@ const ProductPage = (props) => {
 
   const handleTouchEnd = (event) => {
     touchEndX = event.changedTouches[0].screenX;
+  };
+  const handleProductSwipe = () => {
+    const changeInX = touchEndX - touchStartX;
+
+    if (changeInX > 0 && Math.abs(changeInX) > threshold) {
+      moveToPrevSlide();
+    } else if (changeInX < 0 && Math.abs(changeInX) > threshold) {
+      movetoNextSlide();
+    }
   };
 
   useEffect(() => {
@@ -122,7 +123,7 @@ const ProductPage = (props) => {
               }}
               onTouchEnd={(e) => {
                 handleTouchEnd(e);
-                handleProductGesture();
+                handleProductSwipe();
               }}
             >
               {Array.isArray(productImages) &&

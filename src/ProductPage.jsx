@@ -295,7 +295,7 @@ const ProductPage = (props) => {
                 changeCartNo(quantity);
                 localStorage.setItem("quantity", quantity + 1);
               }}
-              className="bg-primary-orange md:hover:bg-opacity-50 basis-[65%] min-w-fit rounded-md py-4 flex items-center justify-center gap-4 mb-4 md:mb-0"
+              className="bg-primary-orange md:hover:bg-opacity-50 basis-[65%] min-w-fit rounded-md py-4 flex items-center justify-center gap-4 mb-4 md:mb-0 hover:bg-opacity-50"
             >
               <span>
                 <svg

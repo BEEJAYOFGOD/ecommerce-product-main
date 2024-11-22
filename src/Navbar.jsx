@@ -16,8 +16,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
   }, [cartNumber]);
 
   return (
-    // <div className="box-border">
-    <nav className="flex w-screen p-4 md:px-0 md:py-6 md:max-w-[1200px] justify-between h-full  md:mx-auto md:border-b-2 border-black border-opacity-20 box-border z-10">
+    <header className="flex w-screen p-4 md:px-0 md:py-6 md:max-w-[1200px] justify-between h-full  md:mx-auto md:border-b-2 border-black border-opacity-20 box-border z-10">
       <div className="flex gap-2 md:gap-12 items-center">
         <button
           id="menuBtn"
@@ -28,13 +27,16 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
         >
           <img src={mobileMenu} alt="" />
         </button>
-        <h1 className="font-bold text-4xl">sneakers</h1>
+
+        <h1 id="companyTitle" className="font-bold text-4xl">
+          sneakers
+        </h1>
 
         <div
           id="mobileNav"
           className=" absolute top-0 left-0 z-50 w-screen md:static md:w-fit min-h-full hidden"
         >
-          <div
+          <nav
             id="nav"
             className="bg-white z-50  w-[70%] md:max-w-fit md:min-h-[30px] slide-in_from_left"
           >
@@ -64,7 +66,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
               <li className="nav-links">About</li>
               <li className="nav-links">Contact</li>
             </ul>
-          </div>
+          </nav>
           <div
             id="navOverlay"
             className="bg-black w-[30%] min-h-full flex md:hidden"
@@ -118,7 +120,7 @@ const NavBar = ({ cartNo: cartNumber, toggleCartDisplay }) => {
           <img className="w-12 " src={avatarImage} alt="avatar" />
         </div>
       </div>
-    </nav>
+    </header>
     // </div>
   );
 };

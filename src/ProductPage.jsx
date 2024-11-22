@@ -22,13 +22,21 @@ const ProductPage = (props) => {
     setThumbIndex(idx);
   };
 
-  const movetoNext = () => {
+  const movetoNextSlide = () => {
     setThumbIndex((index) =>
       index < productImages.length - 1 ? index + 1 : 0
     );
   };
+  const handleProductGesture = () => {
+    const changeInX = touchEndX - touchStartX;
 
-  const moveToPrev = () => {
+    if (changeInX > 0 && Math.abs(changeInX) > threshold) {
+      moveToPrevSlide();
+    } else if (changeInX < 0 && Math.abs(changeInX) > threshold) {
+      movetoNextSlide();
+    }
+  };
+  const moveToPrevSlide = () => {
     setThumbIndex((index) =>
       index === 0 ? productImages.length - 1 : index - 1
     );
@@ -41,6 +49,18 @@ const ProductPage = (props) => {
 
     setQuantity(updatedQuantity);
     changeCartNo(updatedQuantity);
+  };
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const threshold = 50;
+
+  const handleTouchStart = (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (event) => {
+    touchEndX = event.changedTouches[0].screenX;
   };
 
   useEffect(() => {
@@ -72,14 +92,15 @@ const ProductPage = (props) => {
       <section className="md:max-w-[1200px] md:px-12 px-4 w-full  flex flex-col md:flex-row items-center mx-auto md:gap-28 box-border">
         <div className="flex-1">
           <div id="product_c_c" className="relative">
-            <div
+            <button
               className="absolute bottom-1/2 top-[46%]  w-12 h-12 left-2 z-20 bg-white rounded-full p-4 flex justify-center items-center md:hidden cursor-pointer"
               onClick={() => {
-                moveToPrev();
+                alert("hey");
+                moveToPrevSlide();
               }}
             >
               <svg
-                className="stroke-neutral-900 md:stroke-red-500 group-hover:stroke-yellow-500 group-hover:-translate-x-[6px] transition duration-300"
+                className="stroke-neutral-900 md:stroke-red-500 group-hover:stroke-yellow-500 group-hover:-translate-x-[6px] transition duration-300 "
                 width="12"
                 height="18"
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,11 +112,18 @@ const ProductPage = (props) => {
                   fillRule="evenodd"
                 />
               </svg>
-            </div>
+            </button>
 
             <div
               id="productC"
               className="flex w-full cursor-pointer rounded-xl overflow-hidden"
+              onTouchStart={(e) => {
+                handleTouchStart(e);
+              }}
+              onTouchEnd={(e) => {
+                handleTouchEnd(e);
+                handleProductGesture();
+              }}
             >
               {Array.isArray(productImages) &&
                 productImages.map((imageUrl, idx) => (
@@ -119,10 +147,10 @@ const ProductPage = (props) => {
                   </div>
                 ))}
             </div>
-            <div
+            <button
               className="absolute bottom-1/2 top-[46%]  w-12 h-12 right-2 z-20 bg-white rounded-full p-4 flex justify-center items-center md:hidden cursor-pointer"
               onClick={() => {
-                movetoNext();
+                movetoNextSlide();
               }}
             >
               <svg
@@ -138,7 +166,7 @@ const ProductPage = (props) => {
                   fillRule="evenodd"
                 />
               </svg>
-            </div>
+            </button>
           </div>
           <div className={`hidden md:flex gap-2 mt-4`} id="thumbnails">
             {thumbnails.map((imageUrl, idx) => (

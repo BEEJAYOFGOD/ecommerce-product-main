@@ -203,8 +203,11 @@ const ProductPage = (props) => {
             Featuring a durable rubber outer sole, they&apos;ll withstand
             everything the weather can offer
           </p>
-          <div id="pricing" className="flex justify-between mt-6 md:flex-col">
-            <p className=" text-2xl font-bold">
+          <div
+            id="pricing"
+            className="flex justify-between items-center md:items-start mt-6 md:flex-col"
+          >
+            <p className="text-2xl font-bold">
               $125.00
               <span className="bg-neutral-veryDarkBlue text-white py-1 px-2 rounded-md text-base ml-4">
                 50%

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // eslint-disable-next-line react/prop-types
 const Cart = ({ cartNo, cartvisibility, emptyCart }) => {
   let [cartMsg, setCartMsg] = useState(
-    "Your cart is empty buy from us today!!😥"
+    "Your cart is empty, buy from us today!!😥"
   );
 
   const changeCartMsgEmpty = useEffect(() => {
@@ -53,7 +53,7 @@ const Cart = ({ cartNo, cartvisibility, emptyCart }) => {
             </button>
           </div>
         ) : (
-          <div className="w-[300px] h-[100px] flex items-center justify-center">
+          <div className="h-[100px] flex items-center justify-center  p-8">
             <p className="text-center"></p>
             <p className="text-center">{cartMsg || `oops`}</p>
           </div>
